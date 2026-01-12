@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Papper-Scissors</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>Rock Papper Scissors</h1>
+    
+    <button onclick=" 
+    computermove();
+    if (computerMove == 'Rock') {
+        result = 'Match is tie';
+    } else if (computerMove === 'Scissors'){
+        result = 'You Win';
+    }else if (computerMove === 'Papper') {
+        result = 'You Loose';
+    }
+    scoreboard()
+    alert(`your picked Rock computer picked ${computerMove}. ${result}. \nWins: ${score.wins}, Looses: ${score.looses}, Ties: ${score.ties}`)
+    ">Rock</button> 
+    
+    <button onclick="
+    computermove();
+    if (computerMove === 'Rock') {
+        result = 'You Win';
+    } else if (computerMove === 'Scissors'){
+        result = 'You Loose';
+    }else if (computerMove === 'Papper') {
+        result = 'Match is tie';
+    }
+    scoreboard()
+    alert(`your picked Papper computer picked ${computerMove}. ${result}. \nWins: ${score.wins}, Looses: ${score.looses}, Ties: ${score.ties}`)
+    ">Papper</button>
+    
+    <button onclick="
+    computermove();
+    if (computerMove === 'Rock') {
+        result = 'You Loose';
+    } else if (computerMove === 'Scissors'){
+        result = 'Match is tie';
+    }else if (computerMove === 'Papper') {
+        result = 'You Win';
+    }
+    scoreboard()
+    alert(`your picked Scissors computer picked ${computerMove}. ${result}. \nWins: ${score.wins}, Looses: ${score.looses}, Ties: ${score.ties}`)
+    ">Scissors</button>
+    
+    <button onclick="
+    score.looses=0
+    score.ties=0
+    score.wins=0
+    localStorage.removeItem('score')
+    ">Reset Score</button>
+    
+    <script>
+        let computerMove = '';
+        let result = ''
+        // const score = {
+        //     wins: 0,
+        //     looses: 0,
+        //     ties : 0
+        // };
+        let score = JSON.parse(localStorage.getItem("score")) || {wins: 0, looses: 0, ties : 0};
+        
+        function computermove() {
+            const randNum = Math.random();
+            if ((randNum>=0 && randNum<1/9) || (randNum>=4/9 && randNum<5/9) || (randNum>=7/9 && randNum<8/9)) {
+                computerMove = 'Rock';
+            }else if ((randNum>=3/9 && randNum<4/9) || (randNum>=5/9 && randNum<6/9) || (randNum>=1/9 && randNum<2/9)){
+                computerMove = 'Papper';
+            }else if ((randNum>=2/9 && randNum<3/9) || (randNum>=6/9 && randNum<7/9) || (randNum>=8/9 && randNum<1)){
+                computerMove = 'Scissors';
+            }
+        }
+        
+        function scoreboard() {
+            if (result==="You Win") {
+                score.wins+=1
+            }
+            else if (result==="You Loose") {
+                score.looses+=1
+            }
+            else if (result==="Match is tie") {
+                score.ties+=1
+            }
+
+        localStorage.setItem("score",JSON.stringify(score))
+        }
+    </script>
+
+</body>
+</html>
+</body>
+</html>
